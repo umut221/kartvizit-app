@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="kartvizitAra">Karvizit Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="kartvizitAra" placeholder="Kişi adı">
+  </div>
+  <div *ngIf="filterText" class="alert alert-success" role="alert">
+    İsminde "{{filterText}}" içeren kişiler listeleniyor
+  </div>
+
+<div class="row">
+    <div *ngFor="let kartvizit of kartvizits | filterKartvizit:filterText" class="card m-3" style="width: 18rem;">
+        <img src="https://static.wikia.nocookie.net/madmen/images/1/1d/Dondraper.jpg/revision/latest/scale-to-width-down/250?cb=20100727010936" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{kartvizit.title}}</h5>
+          <p class="card-text">{{kartvizit.name}}</p>
+          <p class="card-text">{{kartvizit.email}}</p>
+          <p class="card-text">{{kartvizit.phoneNumber}}</p>
+          <div class="btn-group">
+            <button (click)="detailKartvizit(kartvizit.name)" class="btn btn-primary">Detaya git</button>
+            <button class="btn btn-danger" (click)="deleteKartvizit(kartvizit.id)" >Kartviziti Sil</button>
+          </div>
+        </div>
+      </div>
+</div>
